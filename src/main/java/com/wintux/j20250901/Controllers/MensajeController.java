@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wintux.j20250901.kafka.KafkaProducer;
 
 @RestController
-@RequestMapping("/api/v1/kafka") // http://localhost:8080/pai/v1/kafka
+@RequestMapping("/api/v1/kafka") // http://localhost:8080/api/v1/kafka
 public class MensajeController {
 	private KafkaProducer kafkaProd;
 	
@@ -20,7 +20,7 @@ public class MensajeController {
 	}
 
 
-	@GetMapping("/publicar") // http://localhost:8080/pai/v1/kafka/publicar [GET]
+	@GetMapping("/publicar") // http://localhost:8080/api/v1/kafka/publicar?mensajito=Hola [GET]
 	public ResponseEntity<String> publicar(@RequestParam("mensajito") String msj){
 		kafkaProd.enviarMensaje(msj);
 		return ResponseEntity.ok("Mensaje enviado al topic.");
